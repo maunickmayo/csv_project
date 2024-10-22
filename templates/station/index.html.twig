@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container my-4">
+		<h1 class="mb-4">Liste des stations</h1>
+		<div class="row g-4">
+			{% for station in stations %}
+				<div class="col-sm-12 col-md-6 col-lg-3">
+					<div class="card h-100">
+						<div class="card-body p-2">
+							<h6 class="card-title mb-2" style="font-size: 1rem;">
+								{{ station.name }}
+							</h6>
+							<p class="card-text" style="font-size: 0.875rem;">
+								<img src="{{ station.ligneLogo }}" alt="Logo ligne" class="img-fluid mb-1" style="max-height: 40px;">
+								{% if station.connections %}
+									<strong>Correspondances:</strong>
+									<div>
+										{% for connection in station.connections|split(',') %}
+											<img src="{{ connection }}" alt="Correspondance" class="img-fluid mx-1" style="max-height: 20px;">
+										{% endfor %}
+									</div>
+								{% endif %}
+								{% if station.terminus %}
+									<span class="badge bg-success">Terminus</span>
+								{% endif %}
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
