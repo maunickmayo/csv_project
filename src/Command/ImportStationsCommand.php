@@ -69,7 +69,6 @@ class ImportStationsCommand extends Command
     private function createOrUpdateStation(array $data): Station
     {
         $station = new Station();
-
         $station->setName($data['nom_gares'] ?? 'Inconnu');
         $station->setLigneLogo($data['picto'] ?? '');
         $station->setTerminus($data['principal'] === '1');
