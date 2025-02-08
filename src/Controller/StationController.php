@@ -12,9 +12,7 @@ class StationController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(StationRepository $stationRepository): Response
     {
-        //Pour  récupérer toutes les stations
         $stations = $stationRepository->findAll();
-
         return $this->render('station/index.html.twig', [
             'stations' => $stations,
         ]);
